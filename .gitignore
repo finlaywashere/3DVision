@@ -5,3 +5,4 @@ bin/
 *.log
 data/
 fix.o
+audios.bin
