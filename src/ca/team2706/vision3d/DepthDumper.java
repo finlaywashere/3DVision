@@ -1,8 +1,13 @@
 package ca.team2706.vision3d;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
 
 public class DepthDumper implements Runnable {
 
@@ -28,6 +33,7 @@ public class DepthDumper implements Runnable {
 
 	@Override
 	public void run() {
+		Display pointDisplay = new Display();
 		while (true) {
 			try {
 				if (buffers.size() > 0) {
@@ -50,8 +56,31 @@ public class DepthDumper implements Runnable {
 							points[x][y] = p;
 						}
 					}
-					SceneData sceneData = new SceneData(points, 640, 480);
 					
+					BufferedImage image = new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
+					Graphics g = image.createGraphics();
+					for(int y = 0; y < 480; y++) {
+						for(int x = 0; x < 640; x++) {
+							// Kinda makes it look ok, theres prolly a better way to do it tho
+							double z = Math.log((points[x][y].getZ()/1000000)) * 25;
+							if(z > 255)
+								z = 255;
+							if(z < 0)
+								z = 0;
+							Color c;
+							c = new Color((int)z,0,0);
+							if(z == 255)
+								c = new Color(0,0,255);
+							if(z == 0)
+								c = new Color(0,255,0);
+							g.setColor(c);
+							g.fillRect(x, y, 1, 1);
+						}
+					}
+					g.dispose();
+					
+					pointDisplay.setImage(image);
+					pointDisplay.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					
 				}
 				try {
