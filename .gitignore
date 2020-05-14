@@ -6,3 +6,11 @@ bin/
 data/
 fix.o
 audios.bin
+build/
+output/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
