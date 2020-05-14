@@ -2,7 +2,7 @@
 
 First you must download and compile my forked version of libfreenect
 
-Step 1: do a git clone of https://github.com/thatmadhacker/libfreenect
+Step 1: do a git clone of https://github.com/finlaywashere/libfreenect
 Step 2: run `cd libfreenect && mkdir build && cd build`
 Step 3: run `cmake ..`
 Step 4: run `make && sudo make install`
