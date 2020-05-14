@@ -9,6 +9,7 @@ Step 4: run `make && sudo make install`
 Step 5: run `sudo ln -sf ../include/* /usr/include/`
 
 `fix.o` must be run every time the connect is plugged in.
+It can be compiled using `fix.c` as the source code. `fix.c` is example code taken from the libfreenect examples that I don't know how or why but it updates firmware and it needs to be run.
 This can be done through a udev rule
 
 Before running `fix.o` you must run `python fwfetcher.py` in the same directory as `fix.o`, it will download `audios.bin` and make the kinect work properly
