@@ -1,4 +1,6 @@
-# Usage
+# Dependencies and usage
+
+The two dependencies of 3DVision are a modified version of libfreenect (linked below) and the processing library at https://github.com/finlaywashere/F3DDPODRL
 
 First you must download and compile my forked version of libfreenect
 
